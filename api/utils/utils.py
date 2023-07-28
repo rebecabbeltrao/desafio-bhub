@@ -8,5 +8,3 @@ def IsNotValid(id):
      return True
    return False
 
-def user_already_exists():
-   return True
