@@ -1,8 +1,7 @@
-import datetime
-from flask import Flask, request, jsonify
+from datetime import datetime
+from flask import Flask
 from api.database.models import Customer
 
-from api.utils.utils import user_exists
 # import api.database.models as models
 
 app = Flask(__name__)
@@ -38,48 +37,54 @@ dic = [{
 
 def get_customers():
     # return objects from db
+    # print('')
     customers = Customer.objects()
     return customers
+    # return ' ', 200
 
 def get_customer_by_id(id):
     # return object from db if the matching id
+    print("get customer by id")
     customers = Customer.objects().get(id=id)
     return customers
     #  use equals id funtion
+    # return ' ', 200
 
-def create_customer(new_customer):
-    if user_exists(id):
-        print('user exists')
-    #     exception 
-    else:
-        setCreationDate(new_customer)
-        setGeneration(new_customer)
-        saved_customer = Customer(**new_customer).save() 
-        # check if user_exists(id)
-        # set data cadastro 
-        # save data on db
+def save_customer(new_customer):
+    # if user_exists(id):
+    #     print('user exists')
+    # #     exception 
+    # else:
+    # setCreationDate(new_customer)
+    # setGeneration(new_customer)
+    saved_customer = Customer(**new_customer).save() 
     return saved_customer
 
 def edit_customer_by_id(id, new_customer):
     if user_exists(id):
-        setGeneration(new_customer)
-        edited_customer = Customer.objects(id=id).update(new_customer)
+        # setGeneration(new_customer)
+        Customer.objects(id=id).update(**new_customer)
     else:
         print('')
         # execption/error
-    return edited_customer
+    return ' ', 200
 
 def setCreationDate(object):
+    print("setCreationDate")
     now = datetime.now()
     object["data_cadastro"] = now.isoformat()
 
 def setGeneration(object):
-    generation += 1
+    # if gen == 0 than gen must be 1
+    print("set gen")
+    gen = object["generation"]
+    generation = gen + 1
     object["generation"] = generation
+    print(object["generation"])
 
 def delete_customer_by_id(id):
     if user_exists(id):
-        deleted_custumer = Customer.objects(id=id).delete()
+       Customer.objects(id=id).delete()
     else:
         print('')
     return ' ', 200
