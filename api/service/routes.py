@@ -65,3 +65,4 @@ def deleteCustomerById(id):
         return handleExceptions(e)
     Customer.objects(id=id).delete()
     return '', 200
+

@@ -4,7 +4,7 @@ from flask import Flask
 from api.database.models import db
 from api.service.routes import app_bp
 
-app = Flask(__name__)
+app = Flask(__name__, instance_relative_config=True)
 
 load_dotenv()
 
