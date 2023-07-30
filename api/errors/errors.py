@@ -1,5 +1,10 @@
-def invalidIdMessage():
-    return "Invalid id format, ID must be string."
 
-def userExistsMessage():
-    return "User already exists."
+
+def handleExceptions(e):
+    # response = {
+    #     'message': str(e),
+    #     'status': 400
+    # }
+    return str(e), 400
+    # return response
+
