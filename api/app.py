@@ -3,9 +3,10 @@ from dotenv import load_dotenv
 from flask import Flask
 from api.database.models import db
 from api.service.routes import app_bp
-from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__, instance_relative_config=True)
+
+load_dotenv()
 
 app.config['MONGODB_SETTINGS'] = [
     {
@@ -14,6 +15,7 @@ app.config['MONGODB_SETTINGS'] = [
         "port": int(os.environ.get("DATABASE_PORT"))
     }
 ]
+
 
 db.init_app(app)
 app.register_blueprint(app_bp)
