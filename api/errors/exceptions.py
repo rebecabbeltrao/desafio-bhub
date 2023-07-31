@@ -1,8 +1,3 @@
-
-
-def handleExceptions(e):
-    return str(e), 400
+def handleExceptions(e, status_code):
+    return str(e), status_code
     
-
-def healthCheckMessage():
-    return "I`m well and alive, thanks for asking."
