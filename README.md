@@ -14,14 +14,14 @@ Desafio de criação de API simples para gerenciar os clientes da Bhub.
 
 ## Requisitos 
 
-- Instalar o python 3 na sua máquina (caso não possua)
-- Instalar e configurar o MongoDB na sua máquina (caso não possua)
-- (Não obrigatório) Instalar o Robo3t para gerenciar o Mongodb
-- Criar um arquivo `.env` no projeto usando como base o `env.exemple` e substituir pelas informações do seu banco de dados. 
+- Instalar o [Python 3](https://www.python.org/downloads/) na sua máquina (caso não possua)
+- Instalar e configurar o [MongoDB](https://www.mongodb.com) na sua máquina (caso não possua)
+- (Não obrigatório) Instalar o [Robo3t](https://robomongo.org) para gerenciar o Mongodb
+- Criar um arquivo `.env` no projeto usando como base o `env.example` e substituir pelas informações do seu banco de dados. 
 
 ## Documentação da API
 
-](https://app.swaggerhub.com/apis/rebeca.mbeltrao/desafio-bhub/1.0.0)
+A documentação da API está disponível no [Swagger Hub](https://app.swaggerhub.com/apis/rebeca.mbeltrao/desafio-bhub/1.0.0)
 
 ## Como executar 
 - Crie um ambiente virtual usando o comando `python3 -m venv venv` no diretório raiz do repositório

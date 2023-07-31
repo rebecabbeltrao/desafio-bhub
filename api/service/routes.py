@@ -7,7 +7,6 @@ from api.service.messages import healthCheckMessage
 from http import HTTPStatus
 
 
-
 app_bp = Blueprint('api', __name__, url_prefix='/api/v1')
 
 @app_bp.route('/health', methods=['GET'])
