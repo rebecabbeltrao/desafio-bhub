@@ -24,6 +24,8 @@ Desafio de criação de API simples para gerenciar os clientes da Bhub.
 https://app.swaggerhub.com/apis/REBECAMBELTRAO/desafio-bhub/1.0.0
 
 ## Como executar 
+- Crie um ambiente virtual usando o comando `python3 -m venv venv` no diretório raiz do repositório
+- Depois, ative o ambiente usando o comando `source venv/bin/activate` (Linux ou macOS) ou `venv/Scripts/Activate` (Windows)
 - Instale as bibliotecas com o comando: `pip install -r requirements.txt`
 - Vá para a pasta `api` do projeto e execute seguinte comando: `flask --app app.py run`
-- Caso deseje parar a execução, execute o comando `Ctrl+C`
+- Caso deseje parar a execução, digite `Ctrl+C`
