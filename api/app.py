@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from api.database.models import db
-from api.service.routes import app_bp
+from api.service.routes import app_bp, customer_bp
 
 app = Flask(__name__, instance_relative_config=True)
 
@@ -19,5 +19,6 @@ app.config['MONGODB_SETTINGS'] = [
 
 db.init_app(app)
 app.register_blueprint(app_bp)
+app.register_blueprint(customer_bp)
 
 app.run(port=5000, host='localhost', debug=True)
