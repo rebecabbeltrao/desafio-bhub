@@ -15,7 +15,7 @@
         "tags": [
           "Health-Check"
         ],
-        "summary": "It checks if the application it`s up",
+        "summary": "It checks if the application is up",
         "description": "Get an 200 if it`s alive",
         "produces": [
           "application/json"
