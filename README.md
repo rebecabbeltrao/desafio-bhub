@@ -21,7 +21,7 @@ Desafio de criação de API simples para gerenciar os clientes da Bhub.
 
 ## Documentação da API
 
-https://app.swaggerhub.com/apis/REBECAMBELTRAO/desafio-bhub/1.0.0
+](https://app.swaggerhub.com/apis/rebeca.mbeltrao/desafio-bhub/1.0.0)
 
 ## Como executar 
 - Crie um ambiente virtual usando o comando `python3 -m venv venv` no diretório raiz do repositório
