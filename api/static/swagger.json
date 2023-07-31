@@ -1,0 +1,250 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Simple API CRUD that controls BHub clients.",
+    "version": "1.0.0",
+    "title": "Desafio Bhub",
+    "contact": {
+      "email": "rebeca.mbeltrao@gmail.com"
+    }
+  },
+  "paths": {
+    "/customer": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Returns all customers informations.",
+        "description": "List all customers.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/orders"
+            }
+          },
+          "500": {
+            "description": "internal server error",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Saves a customer",
+        "description": "Create a customer.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Important information",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/orders"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          },
+          "400": {
+            "description": "Invalid id supplied",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      }
+    },
+    "/customer/{id}": {
+      "get": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Get customer by id",
+        "description": "Get an specific customer information by their id.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the customer",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/orders"
+            }
+          },
+          "400": {
+            "description": "Invalid id supplied",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Update customer by id",
+        "description": "Update an specific customer information by their id.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the customer",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Important information",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/orders"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          },
+          "400": {
+            "description": "Invalid id supplied",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Delete customer by id",
+        "description": "Delete an specific customer by their id.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of the customer",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          },
+          "400": {
+            "description": "Invalid id supplied",
+            "schema": {
+              "$ref": "#/definitions/message"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "message": {
+      "type": "string",
+      "description": "A message appears informing something"
+    },
+    "orders": {
+      "type": "object",
+      "required": [
+        "company_name",
+        "phone",
+        "address",
+        "invoicing",
+        "bank_data"
+      ],
+      "properties": {
+        "company_name": {
+          "type": "string",
+          "example": "Test Name"
+        },
+        "phone": {
+          "type": "string",
+          "example": "9999999999"
+        },
+        "address": {
+          "type": "string",
+          "example": "Avenue of Avenues"
+        },
+        "invoicing": {
+          "type": "number",
+          "example": 2000
+        },
+        "bank_data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "branch": {
+                "type": "string",
+                "example": "0000-0"
+              },
+              "bank": {
+                "type": "string",
+                "example": "bank test"
+              },
+              "account": {
+                "type": "string",
+                "example": "0000"
+              }
+            },
+            "required": [
+              "branch",
+              "bank",
+              "account"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,19 +3,18 @@ from flask_mongoengine import MongoEngine
 db = MongoEngine()
 
 class BankAccount(db.EmbeddedDocument):
-    agencia = db.StringField(required=True)
-    conta = db.StringField(required=True)
-    banco = db.StringField(required=True)
+    branch = db.StringField(required=True)
+    account = db.StringField(required=True)
+    bank = db.StringField(required=True)
 
 class Customer(db.Document):
-    razao_social = db.StringField(required=True)
-    telefone = db.StringField(required=True)
-    endereco = db.StringField(required=True)
-    faturamento = db.FloatField(required=True)
-    dados_bancarios = db.EmbeddedDocumentListField(
+    company_name = db.StringField(required=True)
+    phone = db.StringField(required=True)
+    address = db.StringField(required=True)
+    invoicing = db.FloatField(required=True)
+    bank_data = db.EmbeddedDocumentListField(
         document_type=BankAccount,
         required=True
     )
-    data_cadastro = db.StringField(required=True)
+    register_date = db.StringField(required=True)
     last_update = db.StringField(required=False )
-

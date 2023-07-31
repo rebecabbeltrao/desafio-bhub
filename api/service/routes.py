@@ -2,9 +2,16 @@
 from datetime import datetime
 from flask import Blueprint, jsonify, request
 from api.database.models import Customer
-from api.errors.errors import handleExceptions
+from api.errors.exceptions import handleExceptions, healthCheckMessage
 
 app_bp = Blueprint('customers', __name__)
+
+
+@app_bp.route('/health', methods=['GET'])
+def health_check_get():
+    return jsonify({"message": healthCheckMessage()}), 200
+
+customer_bp = Blueprint('customers', __name__, url_prefix='/api/v1')
 
 @app_bp.route('/customer', methods=['GET'])
 def getCustomers():
@@ -13,7 +20,6 @@ def getCustomers():
     except Exception as e:
         return handleExceptions(e)
     return jsonify(customers), 200
-
 
 @app_bp.route('/customer/<id>', methods=['GET'])
 def getCustomerById(id):
@@ -32,7 +38,7 @@ def saveCustomer():
         return handleExceptions(e)
     
     new_customer = request.get_json()
-    setCreationDate(new_customer)
+    setRegisterDate(new_customer)
     setLastUpdate(new_customer)
     saved_customer = Customer(**new_customer).save() 
     return jsonify(saved_customer), 200
@@ -49,9 +55,9 @@ def editCustomerById(id):
     edited_customer = Customer.objects(id=id).update(**new_customer)
     return jsonify(edited_customer), 200
 
-def setCreationDate(object):
+def setRegisterDate(object):
     now = datetime.now()
-    object["data_cadastro"] = now.isoformat()
+    object["register_date"] = now.isoformat()
 
 def setLastUpdate(object):
     now = datetime.now()
